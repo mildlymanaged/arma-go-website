@@ -1,0 +1,140 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import EmailCTA from "../components/EmailCTA.astro";
+import PageHero from "../components/PageHero.astro";
+import {
+  emails,
+  imageAssets,
+  mailto,
+  pageMeta,
+} from "../data/siteContent";
+
+const steps = [
+  {
+    title: "1. Send your enquiry",
+    paragraphs: [
+      "For work or study enquiries, email hello@armago.me.",
+      "For employer or partner enquiries, email partnerships@armago.me.",
+      "Include a short summary of your background, goal, timeline and questions.",
+    ],
+    list: [],
+  },
+  {
+    title: "2. Initial information review",
+    paragraphs: [
+      "The Arma Go team reviews the details you provide.",
+      "We may request additional information to better understand your situation and the type of option you are exploring.",
+    ],
+    list: [],
+  },
+  {
+    title: "3. Option discussion",
+    paragraphs: [
+      "You receive an explanation of what the option may involve, including:",
+    ],
+    list: [
+      "Basic requirements",
+      "Relevant documents",
+      "Likely stages",
+      "Possible costs",
+      "Responsibilities",
+      "Known risks or variables",
+      "Possible next steps",
+    ],
+  },
+  {
+    title: "4. Scope and next steps",
+    paragraphs: ["Before proceeding, you should understand:"],
+    list: [
+      "Which services are included",
+      "Which services are not included",
+      "What you are responsible for",
+      "What Arma Go is responsible for",
+      "Which decisions are made by third parties",
+      "What fees may apply",
+      "What happens next",
+    ],
+  },
+  {
+    title: "5. Document and application preparation",
+    paragraphs: [
+      "If you proceed, the relevant documents, forms and information are prepared or organised for the applicable stage.",
+      "Requirements may vary by option, destination, employer, institution or authority.",
+    ],
+    list: [],
+  },
+  {
+    title: "6. Coordination and updates",
+    paragraphs: [
+      "Arma Go communicates available updates and explains what may be required next within the agreed scope.",
+      "Some stages may depend on decisions or timelines outside Arma Go’s control.",
+    ],
+    list: [],
+  },
+  {
+    title: "7. Preparation for what comes next",
+    paragraphs: ["Depending on the option, the next stage may involve:"],
+    list: [
+      "Interviews",
+      "Assessments",
+      "Additional documents",
+      "Admission preparation",
+      "Pre-departure information",
+      "Travel preparation",
+      "Arrival or onboarding coordination",
+    ],
+  },
+];
+---
+
+<BaseLayout {...pageMeta.process}>
+  <PageHero
+    eyebrow="How it works"
+    title="A clearer route from your first question to your next step"
+    body={[
+      "Every option has different requirements.",
+      "The Arma Go process begins by understanding what you are exploring and what may apply to your situation.",
+    ]}
+    image={imageAssets.process}
+    serif
+  />
+  <Breadcrumbs current="How It Works" />
+
+  <section class="section section-white">
+    <div class="container">
+      {
+        steps.map((step) => (
+          <article class="step-detail" data-reveal>
+            <h2>{step.title}</h2>
+            <div class="prose">
+              {step.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+              {step.list.length > 0 && (
+                <ul>{step.list.map((item) => <li>{item}</li>)}</ul>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section section-sage">
+    <div class="container">
+      <EmailCTA
+        title="Ready to start with your questions?"
+        body={[
+          "For work and study enquiries: hello@armago.me",
+          "For employer and partner enquiries: partnerships@armago.me",
+        ]}
+        label="Email Arma Go"
+        href={mailto.general}
+        email={emails.general}
+      />
+      <p style="margin-top:1rem">
+        Employer and partner enquiries:
+        <a href={mailto.partnerships}>{emails.partnerships}</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,118 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { pageMeta } from "../data/siteContent";
+---
+
+<BaseLayout {...pageMeta.terms} noindex>
+  <!-- This draft requires review and approval by a qualified legal professional before publication. -->
+  <section class="section section-forest">
+    <div class="container page-content-header">
+      <p class="eyebrow">Legal draft</p>
+      <h1>Terms and Conditions</h1>
+      <p style="color:rgb(255 255 255 / .72)">
+        Effective date: <span class="placeholder">[EFFECTIVE DATE REQUIRED]</span>
+      </p>
+    </div>
+  </section>
+  <Breadcrumbs current="Terms and Conditions" />
+  <section class="section section-white">
+    <div class="container">
+      <div class="legal-note">
+        <strong>[LEGAL REVIEW REQUIRED]</strong>
+        <p>
+          This draft requires review and approval by a qualified legal
+          professional before publication.
+        </p>
+      </div>
+      <div class="legal-copy">
+        <section>
+          <h2>1. About these draft terms</h2>
+          <p>
+            These draft terms are a starting structure only. They do not create
+            a final customer agreement and must be aligned with Arma Go’s
+            approved service documents and actual business practices.
+          </p>
+          <p class="placeholder">[COMPANY DETAILS REQUIRED]</p>
+        </section>
+        <section>
+          <h2>2. General website information</h2>
+          <p>
+            Information on this website is general and may change according to
+            the option, destination, employer, institution, applicant or
+            relevant authority.
+          </p>
+          <p>
+            Website information is not a guarantee of eligibility, employment,
+            admission, visas, permits or application approval.
+          </p>
+        </section>
+        <section>
+          <h2>3. Service scope</h2>
+          <p>
+            Before a paid or formal engagement begins, the parties should
+            receive written information confirming the agreed scope,
+            responsibilities, exclusions, applicable fees and next steps.
+          </p>
+          <p class="placeholder">
+            [APPROVED SERVICE-SCOPE AND ENGAGEMENT TERMS REQUIRED]
+          </p>
+        </section>
+        <section>
+          <h2>4. Third-party decisions</h2>
+          <p>
+            Employers, education providers, government authorities and other
+            third parties may control decisions and timelines within an
+            international application or recruitment process. Arma Go does not
+            guarantee those decisions or outcomes.
+          </p>
+        </section>
+        <section>
+          <h2>5. Applicant and client responsibilities</h2>
+          <p>
+            Final terms should explain responsibilities for accurate
+            information, document authenticity, deadlines, communications,
+            payments and changes in circumstances.
+          </p>
+          <p class="placeholder">[CLIENT RESPONSIBILITIES REQUIRED]</p>
+        </section>
+        <section>
+          <h2>6. Fees, cancellations and refunds</h2>
+          <p>
+            Applicable fees, payment stages, third-party costs, cancellation
+            conditions and refund terms must be provided in writing and aligned
+            with the approved refund and cancellation policy.
+          </p>
+          <p class="placeholder">[PAYMENT TERMS REQUIRED]</p>
+        </section>
+        <section>
+          <h2>7. Intellectual property and acceptable use</h2>
+          <p>
+            The final terms should address permitted website use, ownership of
+            website content and restrictions that are appropriate to the
+            organisation.
+          </p>
+          <p class="placeholder">[APPROVED INTELLECTUAL PROPERTY TERMS REQUIRED]</p>
+        </section>
+        <section>
+          <h2>8. Liability, disputes and governing terms</h2>
+          <p>
+            Any liability limits, dispute process and governing-law language
+            must be drafted and approved by qualified legal counsel.
+          </p>
+          <p class="placeholder">
+            [LIABILITY, DISPUTE AND GOVERNING-LAW TERMS REQUIRED]
+          </p>
+        </section>
+        <section>
+          <h2>9. Contact and updates</h2>
+          <p>
+            The final terms should include the appropriate legal contact and
+            explain how updates take effect.
+          </p>
+          <p class="placeholder">[LEGAL CONTACT REQUIRED]</p>
+        </section>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

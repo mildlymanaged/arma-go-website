@@ -1,0 +1,25 @@
+---
+import { ArrowUpRight } from "lucide-astro";
+import { sitePath } from "../data/siteContent";
+
+interface Props {
+  title: string;
+  href?: string;
+}
+
+const { title, href = "" } = Astro.props;
+---
+
+<article class="resource-card" data-reveal>
+  <span class="resource-status">{href ? "Read guide" : "Guide coming soon"}</span>
+  <h3>{title}</h3>
+  {
+    href ? (
+      <a class="card-cover-link" href={sitePath(href)} aria-label={`Read ${title}`}>
+        <ArrowUpRight size={20} aria-hidden="true" />
+      </a>
+    ) : (
+      <span class="resource-mark" aria-hidden="true">↗</span>
+    )
+  }
+</article>

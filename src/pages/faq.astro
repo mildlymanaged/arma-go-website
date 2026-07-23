@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import FAQAccordion from "../components/FAQAccordion.astro";
+import {
+  faqItems,
+  pageMeta,
+} from "../data/siteContent";
+---
+
+<BaseLayout {...pageMeta.faq}>
+  <section class="section section-forest">
+    <div class="container page-content-header" data-reveal>
+      <p class="eyebrow">Frequently Asked Questions</p>
+      <h1>Clear answers before your next step</h1>
+      <p style="color:rgb(255 255 255 / .72)">
+        Find answers about Arma Go, work and study options, documents,
+        eligibility, costs, timelines and employer partnerships.
+      </p>
+    </div>
+  </section>
+  <Breadcrumbs current="Frequently Asked Questions" />
+  <section class="section section-white">
+    <div class="container">
+      <FAQAccordion items={faqItems} />
+    </div>
+  </section>
+</BaseLayout>

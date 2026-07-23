@@ -1,0 +1,23 @@
+---
+import { ArrowUpRight } from "lucide-astro";
+import { sitePath } from "../data/siteContent";
+
+interface Props {
+  number: string;
+  title: string;
+  text: string[];
+  label: string;
+  href: string;
+}
+
+const { number, title, text, label, href } = Astro.props;
+---
+
+<article class="option-card" data-reveal>
+  <div class="card-number" aria-hidden="true">{number}</div>
+  <h3>{title}</h3>
+  {text.map((paragraph) => <p>{paragraph}</p>)}
+  <a class="text-link" href={sitePath(href)}>
+    {label}<ArrowUpRight size={18} aria-hidden="true" />
+  </a>
+</article>

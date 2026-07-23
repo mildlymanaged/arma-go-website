@@ -1,0 +1,73 @@
+---
+import { ArrowUpRight } from "lucide-astro";
+import {
+  emails,
+  mailto,
+  navItems,
+  sitePath,
+} from "../data/siteContent";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="footer-accent" aria-hidden="true"></div>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img
+        src={sitePath("/images/arma-go-logo-horizontal.png")}
+        width="913"
+        height="157"
+        alt="Arma Go"
+        loading="lazy"
+      />
+      <p>Work and study abroad guidance from the UAE.</p>
+      <p>Understand your options, prepare the required steps and know what comes next.</p>
+      <p class="footer-tagline">Know the way before you go.</p>
+    </div>
+    <div>
+      <h2 class="footer-heading">Work and Study Enquiries</h2>
+      <a class="footer-email" href={mailto.general}>
+        {emails.general}<ArrowUpRight size={16} aria-hidden="true" />
+      </a>
+      <h2 class="footer-heading footer-heading-spaced">
+        Employer and Partner Enquiries
+      </h2>
+      <a class="footer-email" href={mailto.partnerships}>
+        {emails.partnerships}<ArrowUpRight size={16} aria-hidden="true" />
+      </a>
+      <a class="button button-amber partner-footer-button" href={mailto.partnerships}>
+        Partner With Arma Go
+      </a>
+    </div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <h2 class="footer-heading">Explore</h2>
+      {
+        navItems.map((item) => (
+          <a href={sitePath(item.href)}>{item.label}</a>
+        ))
+      }
+      <a class="footer-faq" href={sitePath("/faq")}>
+        Frequently Asked Questions
+      </a>
+    </nav>
+  </div>
+  <div class="container footer-disclaimer">
+    <p>
+      Information on this website is general and may change according to the
+      option, destination, employer, institution, applicant or relevant
+      authority.
+    </p>
+    <p>
+      Arma Go does not guarantee employment, admission, visas, permits or
+      application approvals.
+    </p>
+    <p>
+      Confirm current requirements, fees, responsibilities and the agreed scope
+      of service before proceeding.
+    </p>
+  </div>
+  <div class="container footer-bottom">
+    <p>© {year} Arma Go. All rights reserved.</p>
+  </div>
+</footer>

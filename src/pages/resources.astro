@@ -1,0 +1,114 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import PageHero from "../components/PageHero.astro";
+import ResourceCard from "../components/ResourceCard.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import {
+  emails,
+  imageAssets,
+  mailto,
+  pageMeta,
+  resourceArticles,
+  sitePath,
+} from "../data/siteContent";
+
+const categories = [
+  {
+    title: "Work Abroad",
+    text: "Practical guidance about evaluating work opportunities, understanding requirements, preparing documents and asking the right questions before proceeding.",
+  },
+  {
+    title: "Study Abroad",
+    text: "Information about comparing study options, preparing applications, understanding costs and connecting education choices with wider career goals.",
+  },
+  {
+    title: "Documents and Applications",
+    text: "Checklists and explanations to help you organise documents, identify common problems and prepare for application stages.",
+  },
+  {
+    title: "Costs and Timelines",
+    text: "Guidance on understanding service fees, third-party costs, payment stages, possible timelines and factors that may cause changes or delays.",
+  },
+  {
+    title: "Employers and Partners",
+    text: "Insights about candidate readiness, recruitment coordination, mobility support and international hiring processes.",
+  },
+  {
+    title: "Questions to Ask",
+    text: "Practical questions to use when speaking with an adviser, employer, institution or service provider.",
+  },
+];
+---
+
+<BaseLayout {...pageMeta.resources}>
+  <PageHero
+    eyebrow="Resource Centre"
+    title="Practical information before you apply abroad"
+    body={[
+      "Use the Arma Go Resource Centre to understand common requirements, organise your questions and prepare for more useful conversations.",
+      "The information provided is general. Requirements may differ by option, destination, employer, institution, applicant and relevant authority.",
+    ]}
+    image={imageAssets.resources}
+    serif
+  />
+  <Breadcrumbs current="Resources" />
+
+  <section class="section section-sage">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Browse by topic"
+        title="Resource categories"
+      />
+      <div class="category-grid">
+        {
+          categories.map((category) => (
+            <article class="category-card" data-reveal>
+              <h3>{category.title}</h3>
+              <p>{category.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Recommended articles"
+        title="Prepare with practical questions"
+        intro="New guides will be linked here as article content is reviewed and published."
+      />
+      <div class="resource-grid">
+        {
+          resourceArticles.map((resource) => <ResourceCard {...resource} />)
+        }
+      </div>
+      <p style="margin-top:2.25rem">
+        <a class="text-link" href={sitePath("/faq")}>
+          Read Frequently Asked Questions
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container split-grid">
+      <div>
+        <p class="eyebrow">Resources</p>
+        <h2>Have a question that is not covered here?</h2>
+      </div>
+      <div class="prose prose-inverse">
+        <p>
+          <strong>For work and study questions, email:</strong><br />
+          <a href={mailto.general}>{emails.general}</a>
+        </p>
+        <p>
+          <strong>For employer and partner questions, email:</strong><br />
+          <a href={mailto.partnerships}>{emails.partnerships}</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

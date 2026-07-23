@@ -1,0 +1,152 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import EmailCTA from "../components/EmailCTA.astro";
+import PageHero from "../components/PageHero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import {
+  emails,
+  imageAssets,
+  mailto,
+  pageMeta,
+} from "../data/siteContent";
+
+const considerations = [
+  "The qualification you want to gain",
+  "How the program connects with your career plans",
+  "Academic entry requirements",
+  "Language requirements",
+  "Tuition and living costs",
+  "Application timelines",
+  "Document requirements",
+  "Financial requirements",
+  "Rules related to working during study",
+  "Possible options after graduation",
+];
+
+const support = [
+  {
+    title: "Study option discussions",
+    text: "Discuss your education, career goals, preferred destination, timeline and budget.",
+  },
+  {
+    title: "Basic requirement checks",
+    text: "Understand the academic, language, financial or document requirements that may apply.",
+  },
+  {
+    title: "Program and option comparisons",
+    text: "Compare possible study options based on your situation rather than choosing only by destination.",
+  },
+  {
+    title: "Document preparation",
+    text: "Identify and organise the documents required for the applicable stage.",
+  },
+  {
+    title: "Application coordination",
+    text: "Receive support with the application steps included within the agreed service.",
+  },
+  {
+    title: "Timeline and update support",
+    text: "Understand the current stage, expected next actions and known factors that may affect timing.",
+  },
+];
+
+const preparation = [
+  "Your education history",
+  "Academic certificates and transcripts",
+  "English or other language-test information",
+  "Your preferred field of study",
+  "Your career objective",
+  "Your budget range",
+  "Your intended intake or timeline",
+  "Your preferred destination, if known",
+  "Any previous admission or visa history",
+  "Questions about costs, requirements and next steps",
+];
+---
+
+<BaseLayout {...pageMeta.study}>
+  <PageHero
+    eyebrow="Study abroad"
+    title="Understand your study abroad options from the UAE"
+    body={[
+      "Compare study options based on your education, career plans, budget and preferred timeline.",
+      "Arma Go helps you understand what a study option may involve before you begin the application.",
+    ]}
+    image={imageAssets.study}
+    primary={{ label: "Email About Study Options", href: mailto.study }}
+  />
+  <Breadcrumbs current="Study Abroad" />
+
+  <section class="section section-white">
+    <div class="container intro-grid">
+      <p class="intro-lead" data-reveal>
+        Choose an option, not only a destination
+      </p>
+      <div class="prose" data-reveal>
+        <p>
+          The right study option should be considered in relation to your wider
+          goal.
+        </p>
+        <p>
+          <strong>
+            Before choosing a country, institution or program, consider:
+          </strong>
+        </p>
+        <ul>{considerations.map((item) => <li>{item}</li>)}</ul>
+        <p>
+          Work rights, options after graduation and immigration outcomes depend
+          on the relevant rules and should not be treated as guaranteed.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sage">
+    <div class="container">
+      <SectionHeading
+        eyebrow="How Arma Go may support you"
+        title="Support for your study plans"
+        intro="Depending on the option and agreed scope, support may include:"
+      />
+      <div class="editorial-list">
+        {
+          support.map((item) => (
+            <article class="editorial-item" data-reveal>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="container detail-section">
+      <h2>Prepare for a useful discussion about study options</h2>
+      <div class="prose">
+        <p>Prepare as much of the following information as possible:</p>
+        <ul>{preparation.map((item) => <li>{item}</li>)}</ul>
+        <p>
+          You can still contact Arma Go if you are unsure about the destination
+          or program. Begin with your goal and current situation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sage">
+    <div class="container">
+      <EmailCTA
+        title="Start with your education and career goals"
+        body={[
+          "Email us with a short summary of your current or highest qualification, the field you want to study, your career goal, your preferred destination if known, your intended timeline, your approximate budget and your main questions.",
+        ]}
+        label="Email About Study Options"
+        href={mailto.study}
+        email={emails.general}
+      />
+    </div>
+  </section>
+</BaseLayout>

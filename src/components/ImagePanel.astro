@@ -1,0 +1,39 @@
+---
+import { sitePath } from "../data/siteContent";
+
+interface Props {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  eager?: boolean;
+  position?: string;
+  class?: string;
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  eager = false,
+  position = "center",
+  class: className = "",
+} = Astro.props;
+---
+
+<figure class:list={["image-panel", className]} data-reveal>
+  <div class="image-panel-inner">
+    <img
+      src={sitePath(src)}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={eager ? "eager" : "lazy"}
+      fetchpriority={eager ? "high" : "auto"}
+      decoding="async"
+      style={`object-position:${position}`}
+    />
+    <span class="image-gradient" aria-hidden="true"></span>
+  </div>
+</figure>

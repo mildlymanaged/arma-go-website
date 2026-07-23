@@ -1,0 +1,27 @@
+---
+import { ArrowRight, Mail } from "lucide-astro";
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  body: string[];
+  label: string;
+  href: string;
+  email?: string;
+}
+
+const { eyebrow, title, body, label, href, email } = Astro.props;
+---
+
+<section class="email-cta" data-reveal>
+  <div class="email-icon" aria-hidden="true"><Mail size={24} /></div>
+  <div class="email-cta-copy">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h2>{title}</h2>
+    {body.map((paragraph) => <p>{paragraph}</p>)}
+    {email && <a class="email-address" href={href}>{email}</a>}
+  </div>
+  <a class="button button-amber" href={href}>
+    {label}<ArrowRight size={18} aria-hidden="true" />
+  </a>
+</section>

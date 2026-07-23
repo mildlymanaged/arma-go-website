@@ -1,0 +1,103 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { pageMeta } from "../data/siteContent";
+---
+
+<BaseLayout {...pageMeta.privacy} noindex>
+  <!-- This draft requires review and approval by a qualified legal professional before publication. -->
+  <section class="section section-forest">
+    <div class="container page-content-header">
+      <p class="eyebrow">Legal draft</p>
+      <h1>Privacy Policy</h1>
+      <p style="color:rgb(255 255 255 / .72)">
+        Effective date: <span class="placeholder">[EFFECTIVE DATE REQUIRED]</span>
+      </p>
+    </div>
+  </section>
+  <Breadcrumbs current="Privacy Policy" />
+  <section class="section section-white">
+    <div class="container">
+      <div class="legal-note">
+        <strong>[LEGAL REVIEW REQUIRED]</strong>
+        <p>
+          This draft requires review and approval by a qualified legal
+          professional before publication.
+        </p>
+      </div>
+      <div class="legal-copy">
+        <section>
+          <h2>1. About this draft</h2>
+          <p>
+            This draft explains, at a general level, how information may be
+            handled when someone visits the Arma Go website or contacts Arma Go.
+            It must be updated to reflect the organisation’s actual practices
+            before publication.
+          </p>
+          <p class="placeholder">[COMPANY DETAILS REQUIRED]</p>
+        </section>
+        <section>
+          <h2>2. Information provided by website visitors</h2>
+          <p>
+            The website’s main contact method is email. A person may choose to
+            provide contact details, background information, questions and
+            other information relevant to an enquiry.
+          </p>
+          <p>
+            Do not send passports, identification documents or sensitive
+            personal information in a first enquiry.
+          </p>
+        </section>
+        <section>
+          <h2>3. Information collected through the website</h2>
+          <p>
+            This static website does not include an account system, database or
+            contact form. Any hosting or analytics information collected in the
+            future must be described here before the relevant service is
+            enabled.
+          </p>
+          <p class="placeholder">[HOSTING AND ANALYTICS PRACTICES REQUIRED]</p>
+        </section>
+        <section>
+          <h2>4. Why information may be used</h2>
+          <p>Information may be used to:</p>
+          <ul>
+            <li>Read and respond to an enquiry.</li>
+            <li>Understand the type of work, study or partnership enquiry being explored.</li>
+            <li>Request information needed for an agreed next step.</li>
+            <li>Communicate about an agreed service.</li>
+          </ul>
+          <p class="placeholder">[ACTUAL PURPOSES AND LEGAL BASES REQUIRED]</p>
+        </section>
+        <section>
+          <h2>5. Sharing, storage and retention</h2>
+          <p>
+            The organisation’s actual practices for service providers, email
+            storage, international transfers, access controls and retention
+            periods must be confirmed before this section is published.
+          </p>
+          <p class="placeholder">
+            [SHARING, STORAGE, TRANSFER AND RETENTION DETAILS REQUIRED]
+          </p>
+        </section>
+        <section>
+          <h2>6. Individual rights and contact</h2>
+          <p>
+            Applicable rights, request procedures, verification steps and the
+            correct privacy contact must be confirmed by qualified counsel.
+          </p>
+          <p class="placeholder">
+            [RIGHTS, REQUEST PROCESS AND PRIVACY CONTACT REQUIRED]
+          </p>
+        </section>
+        <section>
+          <h2>7. Updates to this policy</h2>
+          <p>
+            The approved policy should explain how changes will be communicated
+            and should display its effective date.
+          </p>
+        </section>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,65 @@
+---
+interface Item {
+  question: string;
+  answer: readonly string[];
+}
+
+interface Props {
+  items: readonly Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="faq-list">
+  {
+    items.map((item, index) => (
+      <section class="faq-item">
+        <h2>
+          <button
+            class="faq-question"
+            type="button"
+            aria-expanded="false"
+            aria-controls={`faq-answer-${index}`}
+            id={`faq-question-${index}`}
+          >
+            <span>{item.question}</span>
+            <span class="faq-plus" aria-hidden="true" />
+          </button>
+        </h2>
+        <div
+          class="faq-answer"
+          id={`faq-answer-${index}`}
+          role="region"
+          aria-labelledby={`faq-question-${index}`}
+          hidden
+        >
+          {item.answer.map((paragraph) =>
+            paragraph.startsWith("•") ? (
+              <ul>
+                {paragraph
+                  .split("\n")
+                  .map((line) => <li>{line.replace(/^•\s*/, "")}</li>)}
+              </ul>
+            ) : (
+              <p>{paragraph}</p>
+            ),
+          )}
+        </div>
+      </section>
+    ))
+  }
+</div>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>(".faq-question").forEach((button) => {
+    button.addEventListener("click", () => {
+      const answerId = button.getAttribute("aria-controls");
+      const answer = answerId ? document.getElementById(answerId) : null;
+      if (!answer) return;
+      const isOpen = button.getAttribute("aria-expanded") === "true";
+      button.setAttribute("aria-expanded", String(!isOpen));
+      answer.hidden = isOpen;
+    });
+  });
+</script>

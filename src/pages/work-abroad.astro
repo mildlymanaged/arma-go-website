@@ -1,0 +1,203 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import EmailCTA from "../components/EmailCTA.astro";
+import PageHero from "../components/PageHero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import {
+  emails,
+  imageAssets,
+  mailto,
+  pageMeta,
+} from "../data/siteContent";
+
+const support = [
+  {
+    title: "Initial option review",
+    text: "Discuss the type of work opportunity you are exploring and whether your background may meet the basic requirements.",
+  },
+  {
+    title: "CV and background review",
+    text: "Review your work history, education, qualifications and other relevant information.",
+  },
+  {
+    title: "Document preparation",
+    text: "Identify the documents that may be needed and help organise them for the relevant stage.",
+  },
+  {
+    title: "Application or candidate-submission support",
+    text: "Receive assistance with the steps included within the agreed service.",
+  },
+  {
+    title: "Interview or assessment preparation",
+    text: "Understand what may be expected and prepare for the applicable interview or assessment stage.",
+  },
+  {
+    title: "Timeline and update coordination",
+    text: "Receive information about the current stage and any known next steps.",
+  },
+  {
+    title: "Pre-departure preparation",
+    text: "Where applicable, receive information about preparation before travel, arrival or onboarding.",
+  },
+];
+
+const opportunityQuestions = [
+  "The exact role and responsibilities",
+  "Who may be eligible",
+  "What experience or qualifications may be required",
+  "Whether language, licensing or assessments apply",
+  "Which documents may be needed",
+  "What costs should be considered",
+  "What the likely stages may involve",
+  "Who is responsible for each step",
+];
+
+const preparation = [
+  "Your current CV",
+  "Employment history",
+  "Education and training",
+  "Professional licences or certificates",
+  "Language ability",
+  "Passport validity",
+  "Current UAE residence status",
+  "Preferred timeline",
+  "Available budget",
+  "Previous applications or relevant history",
+];
+
+const questions = [
+  "What is the exact role?",
+  "What are the basic requirements?",
+  "What experience or qualifications are required?",
+  "What documents will be needed?",
+  "What costs are included and excluded?",
+  "Who makes the final hiring decision?",
+  "What timeline is realistic?",
+  "What could delay or change the process?",
+  "Who is responsible for each step?",
+  "Can the scope, fees and next steps be provided in writing?",
+];
+---
+
+<BaseLayout {...pageMeta.work}>
+  <PageHero
+    eyebrow="Work abroad"
+    title="Explore work abroad options from the UAE"
+    body={[
+      "Understand the role, requirements, documents and process before you apply for a work opportunity abroad.",
+      "Arma Go helps UAE-based candidates explore possible options and prepare for the steps that may follow.",
+    ]}
+    image={imageAssets.work}
+    primary={{ label: "Email About Work Options", href: mailto.work }}
+  />
+  <Breadcrumbs current="Work Abroad" />
+
+  <section class="section section-white">
+    <div class="container intro-grid">
+      <p class="intro-lead" data-reveal>
+        A destination and salary are not enough to understand a work opportunity
+      </p>
+      <div class="prose" data-reveal>
+        <p>
+          Before you move forward, you should understand more than where the
+          opportunity is located or how much it may pay.
+        </p>
+        <p><strong>A credible work opportunity should clearly explain:</strong></p>
+        <ul>{opportunityQuestions.map((item) => <li>{item}</li>)}</ul>
+        <p>
+          <strong>
+            Arma Go helps you ask the right questions and understand what may
+            apply to your situation.
+          </strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sage">
+    <div class="container">
+      <SectionHeading
+        eyebrow="How Arma Go may support you"
+        title="Support for your work-abroad journey"
+        intro="Depending on the work option and agreed scope, support may include:"
+      />
+      <div class="editorial-list">
+        {
+          support.map((item) => (
+            <article class="editorial-item" data-reveal>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="container detail-section">
+      <h2>Prepare the information that helps explain your situation</h2>
+      <div class="prose">
+        <p>
+          Requirements differ by role and destination, but an initial review
+          may consider:
+        </p>
+        <ul>{preparation.map((item) => <li>{item}</li>)}</ul>
+        <p>
+          You do not need to have every document ready before contacting Arma
+          Go. Begin by explaining what you are exploring and what information
+          you currently have.
+        </p>
+      </div>
+    </div>
+    <div class="container detail-section">
+      <h2>Not every work option fits every applicant</h2>
+      <div class="prose">
+        <p>
+          Some opportunities may require specific experience, qualifications,
+          licences or language ability. Other opportunities may have different entry
+          requirements.
+        </p>
+        <p>
+          <strong>
+            An initial review is not a guarantee of employment, visa approval
+            or final eligibility.
+          </strong>
+        </p>
+        <p>
+          Its purpose is to help you understand which options may be relevant,
+          what may not fit yet and what preparation could be required.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container split-grid">
+      <SectionHeading
+        eyebrow="Questions to ask"
+        title="Questions to ask before considering a work opportunity abroad"
+        intro="Before you decide to proceed, ask:"
+        inverse
+      />
+      <ul class="content-list prose-inverse">
+        {questions.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-sage">
+    <div class="container">
+      <EmailCTA
+        title="Considering a work opportunity abroad? Begin with the route."
+        body={[
+          "Email us with your current occupation, your experience, your current location, the type of work you are exploring, your preferred destination if known, and your main questions.",
+        ]}
+        label="Email About Work Options"
+        href={mailto.work}
+        email={emails.general}
+      />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { pageMeta, sitePath } from "../data/siteContent";
+---
+
+<BaseLayout
+  title={`Page not found | Arma Go`}
+  description={pageMeta.home.description}
+  noindex
+>
+  <section class="section section-forest">
+    <div class="container page-content-header">
+      <p class="eyebrow">404</p>
+      <h1>This route does not exist.</h1>
+      <p style="color:rgb(255 255 255 / .72)">
+        Return to Arma Go and continue from a clear starting point.
+      </p>
+      <a class="button button-amber" href={sitePath("/")} style="margin-top:2rem">
+        Return home
+      </a>
+    </div>
+  </section>
+</BaseLayout>

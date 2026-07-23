@@ -1,0 +1,120 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import PageHero from "../components/PageHero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import {
+  emails,
+  imageAssets,
+  mailto,
+  pageMeta,
+} from "../data/siteContent";
+
+const values = [
+  {
+    title: "Understand before acting",
+    text: "People should know what they are considering before making a commitment.",
+  },
+  {
+    title: "Prepare for the actual route",
+    text: "The correct preparation depends on the option, applicant and destination.",
+  },
+  {
+    title: "Explain responsibilities clearly",
+    text: "Applicants, employers, institutions, advisers and authorities may each control different parts of the process.",
+  },
+  {
+    title: "Communicate what comes next",
+    text: "A clear process should help people understand both their current stage and the next required action.",
+  },
+  {
+    title: "Make serious decisions easier to understand",
+    text: "Working or studying abroad can feel complicated. Clear information helps people ask better questions and make better-informed decisions.",
+  },
+];
+---
+
+<BaseLayout {...pageMeta.about}>
+  <PageHero
+    eyebrow="About Arma Go"
+    title="Helping people understand the way before they go"
+    body={[
+      "Arma Go is a UAE-based work and study abroad guidance brand.",
+      "We help people understand their options before making serious decisions involving their career, education, finances and future.",
+    ]}
+    image={imageAssets.about}
+    serif
+  />
+  <Breadcrumbs current="About" />
+
+  <section class="section section-white">
+    <div class="container intro-grid">
+      <p class="intro-lead" data-reveal>
+        Going abroad involves more than choosing a destination.
+      </p>
+      <div class="prose" data-reveal>
+        <p>
+          There may be requirements to understand, documents to prepare,
+          applications to complete, costs to consider, timelines to follow and
+          decisions that depend on several different parties.
+        </p>
+        <p><strong>Arma Go helps make the route easier to understand.</strong></p>
+        <p>
+          Our role is to explain what an option may involve, what requirements
+          may apply, what needs to be prepared and what may happen next.
+        </p>
+        <p>
+          Depending on the option and agreed service, Arma Go may support with
+          option reviews, document preparation, application coordination,
+          timelines, updates, information sessions and next-step guidance.
+        </p>
+        <p>
+          For employers and partners, Arma Go may also support candidate
+          sourcing, readiness, recruitment coordination and international
+          mobility processes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sage">
+    <div class="container">
+      <SectionHeading eyebrow="Our approach" title="What guides Arma Go" />
+      <div class="values-grid">
+        {
+          values.map((item, index) => (
+            <article class="value-card" data-reveal>
+              <div class="card-number">
+                {String(index + 1).padStart(2, "0")}
+              </div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container split-grid">
+      <div>
+        <h2>Know the way before you go.</h2>
+      </div>
+      <div class="prose prose-inverse">
+        <p>
+          Before you apply, send documents or commit to a route, understand
+          what the process may involve.
+        </p>
+        <p>
+          <strong>Work and study enquiries</strong><br />
+          <a href={mailto.general}>{emails.general}</a>
+        </p>
+        <p>
+          <strong>Employer and partner enquiries</strong><br />
+          <a href={mailto.partnerships}>{emails.partnerships}</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

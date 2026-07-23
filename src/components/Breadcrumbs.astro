@@ -1,0 +1,31 @@
+---
+import { sitePath } from "../data/siteContent";
+
+interface Props {
+  current: string;
+}
+
+const { current } = Astro.props;
+const items = [
+  { name: "Home", item: new URL(sitePath("/"), Astro.site).toString() },
+  { name: current, item: Astro.url.toString() },
+];
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items.map((item, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: item.name,
+    item: item.item,
+  })),
+};
+---
+
+<nav class="breadcrumbs container" aria-label="Breadcrumb">
+  <ol>
+    <li><a href={sitePath("/")}>Home</a></li>
+    <li aria-current="page">{current}</li>
+  </ol>
+</nav>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />

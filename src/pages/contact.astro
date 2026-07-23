@@ -1,0 +1,145 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import PageHero from "../components/PageHero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import {
+  emails,
+  mailto,
+  pageMeta,
+  sitePath,
+} from "../data/siteContent";
+
+const workUses = [
+  "Work-abroad questions",
+  "Study-abroad questions",
+  "Requirements",
+  "Documents",
+  "Applications",
+  "Timelines",
+  "General enquiries",
+];
+
+const partnerUses = [
+  "Employer enquiries",
+  "Recruitment partnerships",
+  "Candidate sourcing",
+  "Candidate readiness",
+  "Mobility coordination",
+  "Institutional partnerships",
+  "Community partnerships",
+  "Referral partnerships",
+];
+
+const workInclude = [
+  "Your full name",
+  "Your current location",
+  "Whether you are exploring work or study",
+  "Your current occupation or education",
+  "Your preferred destination, if known",
+  "Your preferred timeline",
+  "A short explanation of what you need help with",
+];
+
+const partnerInclude = [
+  "Your organisation name",
+  "Your location",
+  "The type of partnership or service you are exploring",
+  "The roles, candidate groups or project involved",
+  "Your preferred timeline",
+  "Your contact details",
+  "A short summary of your requirements",
+];
+---
+
+<BaseLayout {...pageMeta.contact}>
+  <PageHero
+    eyebrow="Contact"
+    title="Start with your questions"
+    body={[
+      "Contact the correct Arma Go team based on what you are exploring.",
+    ]}
+  />
+  <Breadcrumbs current="Contact" />
+
+  <section class="section section-white">
+    <div class="container contact-grid">
+      <article class="contact-card" data-reveal>
+        <p class="eyebrow">Work and study enquiries</p>
+        <h2>Work or study abroad enquiries</h2>
+        <a class="email-address" href={mailto.general}>{emails.general}</a>
+        <p>Use this email for:</p>
+        <ul class="content-list">
+          {workUses.map((item) => <li>{item}</li>)}
+        </ul>
+        <a class="button button-dark" href={mailto.general}>Email Arma Go</a>
+      </article>
+      <article class="contact-card" data-reveal>
+        <p class="eyebrow">Employer and partner enquiries</p>
+        <h2>Employer and partner enquiries</h2>
+        <a class="email-address" href={mailto.partnerships}>
+          {emails.partnerships}
+        </a>
+        <p>Use this email for:</p>
+        <ul class="content-list">
+          {partnerUses.map((item) => <li>{item}</li>)}
+        </ul>
+        <a class="button button-dark" href={mailto.partnerships}>
+          Email Our Partnerships Team
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-sage">
+    <div class="container">
+      <SectionHeading title="What to include in your email" />
+      <div class="contact-grid">
+        <article class="contact-card" data-reveal>
+          <h3>For work or study enquiries</h3>
+          <p>Include:</p>
+          <ul class="content-list">
+            {workInclude.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+        <article class="contact-card" data-reveal>
+          <h3>For employer or partner enquiries</h3>
+          <p>Include:</p>
+          <ul class="content-list">
+            {partnerInclude.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      </div>
+      <div class="notice" style="margin-top:1rem" data-reveal>
+        <p>
+          Do not send passports, identification documents or sensitive personal
+          information in your first email.
+        </p>
+        <p>The team will let you know if further information is required.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container transparency-panel" data-reveal>
+      <div>
+        <h2>Clear expectations from the first enquiry</h2>
+      </div>
+      <div class="prose prose-inverse">
+        <p>
+          Sending an enquiry does not confirm eligibility or guarantee
+          employment, admission, visas, permits or application approval.
+        </p>
+        <p>
+          Requirements and outcomes may depend on employers, institutions,
+          authorities and other third parties.
+        </p>
+        <p>
+          <a class="text-link" href={sitePath("/faq")}>
+            Read Frequently Asked Questions
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

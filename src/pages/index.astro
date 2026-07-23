@@ -1,0 +1,304 @@
+---
+import {
+  CheckCircle2,
+  ClipboardCheck,
+  Compass,
+  FileCheck2,
+  ListChecks,
+  Route,
+  TimerReset,
+} from "lucide-astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import OptionCard from "../components/OptionCard.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import ProcessSteps from "../components/ProcessSteps.astro";
+import ResourceCard from "../components/ResourceCard.astro";
+import EmailCTA from "../components/EmailCTA.astro";
+import {
+  emails,
+  featuredResources,
+  imageAssets,
+  mailto,
+  pageMeta,
+  sitePath,
+} from "../data/siteContent";
+
+const supportItems = [
+  {
+    title: "Understanding your options",
+    text: "Compare possible options based on your goals, background, experience, education and current level of preparation.",
+    icon: Compass,
+  },
+  {
+    title: "Checking basic requirements",
+    text: "Understand the experience, education, language, financial or document requirements that may apply.",
+    icon: CheckCircle2,
+  },
+  {
+    title: "Preparing documents",
+    text: "Organise the documents required for the relevant stage and identify missing, incomplete or outdated information.",
+    icon: FileCheck2,
+  },
+  {
+    title: "Supporting applications",
+    text: "Receive support with the application steps included within the agreed service.",
+    icon: ClipboardCheck,
+  },
+  {
+    title: "Explaining timelines",
+    text: "Understand the likely stages, what may affect timing and which decisions depend on third parties.",
+    icon: TimerReset,
+  },
+  {
+    title: "Coordinating next steps",
+    text: "Receive updates and guidance on what you may need to complete next.",
+    icon: ListChecks,
+  },
+];
+
+const homeSteps = [
+  {
+    title: "Tell us what you are exploring",
+    text: "Email us with your goal, background, current location, preferred timeline and main questions.",
+  },
+  {
+    title: "Review the basic information",
+    text: "The Arma Go team reviews the information you provide and identifies what may need to be discussed or clarified.",
+  },
+  {
+    title: "Understand the route",
+    text: "Learn what the option may involve, what requirements may apply, what documents could be needed and which stages may follow.",
+  },
+  {
+    title: "Prepare the required steps",
+    text: "Organise the relevant documents, information and actions for the applicable stage.",
+  },
+  {
+    title: "Move through the process",
+    text: "Receive coordination, updates and guidance through the steps included within the agreed service.",
+  },
+];
+
+const whyItems = [
+  {
+    title: "Clarity before commitment",
+    text: "Understand what you are considering before investing significant time, money or energy.",
+  },
+  {
+    title: "Preparation based on the route",
+    text: "Requirements differ between options, destinations and applicants. Your preparation should reflect the option you are actually exploring.",
+  },
+  {
+    title: "Guidance beyond the first application",
+    text: "International applications may involve several stages. Arma Go helps explain what comes next within the agreed process.",
+  },
+  {
+    title: "Support from the UAE",
+    text: "Access guidance while you are still in the UAE and preparing for your next step abroad.",
+  },
+];
+---
+
+<BaseLayout {...pageMeta.home}>
+  <PageHero
+    eyebrow="Work & study abroad guidance"
+    title="Know the way before you go"
+    body={[
+      "Arma Go helps people in the UAE explore work and study options abroad with clearer information, practical preparation and guidance through the steps that may follow.",
+      "Understand your options, check the requirements, prepare your documents and know what comes next.",
+    ]}
+    image={imageAssets.home}
+    primary={{ label: "Explore Work Options", href: "/work-abroad" }}
+    secondary={{ label: "Explore Study Options", href: "/study-abroad" }}
+    home
+  >
+    <a slot="supporting" class="hero-support-link" href={mailto.general}>
+      Have questions? Email {emails.general}
+    </a>
+  </PageHero>
+
+  <section class="section section-white">
+    <div class="container intro-grid">
+      <p class="intro-lead" data-reveal>
+        Going abroad is a big decision. It should not begin with guesswork.
+      </p>
+      <div class="prose" data-reveal>
+        <p><strong>Choosing a country is only one part of the process.</strong></p>
+        <p>
+          Before you apply, you may need to understand eligibility requirements,
+          prepare documents, compare costs, follow application stages and plan
+          for decisions that depend on employers, institutions or authorities.
+        </p>
+        <p><strong>Arma Go helps make the route easier to understand.</strong></p>
+        <p>
+          We begin with your situation, your goal and the type of work or study
+          option you are exploring. From there, we help explain what may apply,
+          what you may need to prepare and what the next step could involve.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sage">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Choose your direction"
+        title="What are you exploring?"
+        serif
+      />
+      <div class="option-grid">
+        <OptionCard
+          number="01"
+          title="Work Abroad"
+          text={[
+            "Explore international work options from the UAE.",
+            "Understand the role, basic requirements, documents, likely process and preparation that may apply before you move forward.",
+          ]}
+          label="Explore Work Options"
+          href="/work-abroad"
+        />
+        <OptionCard
+          number="02"
+          title="Study Abroad"
+          text={[
+            "Compare study options based on your education, career plans, budget and preferred timeline.",
+            "Understand the application process, required documents and important questions to ask before choosing a program.",
+          ]}
+          label="Explore Study Options"
+          href="/study-abroad"
+        />
+        <OptionCard
+          number="03"
+          title="Employers and Partners"
+          text={[
+            "Build a clearer process for identifying, preparing and supporting international candidates.",
+            "Speak with Arma Go about candidate readiness, recruitment coordination and mobility support.",
+          ]}
+          label="Employer and Partner Enquiries"
+          href={mailto.partnerships}
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="container">
+      <SectionHeading
+        eyebrow="What Arma Go helps with"
+        title="Clearer information at every important step"
+        intro="Every work or study option is different. Depending on the route and your situation, Arma Go may support you with the following:"
+      />
+      <div class="feature-grid">
+        {
+          supportItems.map(({ title, text, icon: Icon }) => (
+            <article class="feature-card" data-reveal>
+              <div class="icon-box"><Icon size={22} aria-hidden="true" /></div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container split-grid">
+      <div>
+        <SectionHeading
+          eyebrow="How it works"
+          title="A clearer route from your first question to your next step"
+          inverse
+        />
+        <a class="button button-amber" href={sitePath("/how-it-works")}>
+          See How Arma Go Works<Route size={18} aria-hidden="true" />
+        </a>
+      </div>
+      <ProcessSteps steps={homeSteps} />
+    </div>
+  </section>
+
+  <section class="section section-sage">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Why Arma Go"
+        title="Know more before you decide"
+        serif
+      />
+      <div class="values-grid">
+        {
+          whyItems.map((item, index) => (
+            <article class="value-card" data-reveal>
+              <div class="card-number">
+                {String(index + 1).padStart(2, "0")}
+              </div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container transparency-panel" data-reveal>
+      <div>
+        <p class="eyebrow">Transparency</p>
+        <h2>Clear guidance includes clear expectations</h2>
+      </div>
+      <div class="prose prose-inverse">
+        <p>
+          International work and study applications may involve decisions by
+          employers, education providers, government authorities and other
+          third parties.
+        </p>
+        <p><strong>Arma Go does not control or guarantee those decisions.</strong></p>
+        <p>
+          Our responsibility is to explain the process clearly, help prepare
+          the steps included within our service and communicate what is known,
+          what may change and what you may need to do next.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Resources"
+        title="Prepare before you apply"
+        intro="Use Arma Go’s practical guides to understand common requirements, organise your questions and make better-informed decisions."
+      />
+      <div class="resource-grid">
+        {
+          featuredResources.map((resource) => (
+            <ResourceCard {...resource} />
+          ))
+        }
+      </div>
+      <div style="margin-top:2rem">
+        <a class="button button-dark" href={sitePath("/resources")}>
+          Visit the Resource Centre
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sage">
+    <div class="container">
+      <EmailCTA
+        eyebrow="Start here"
+        title="Start with your questions"
+        body={[
+          "Exploring work or study abroad from the UAE?",
+          "Email us with a short explanation of what you are considering, your current situation and what you need help understanding.",
+        ]}
+        label="Email Arma Go"
+        href={mailto.general}
+        email={emails.general}
+      />
+    </div>
+  </section>
+</BaseLayout>

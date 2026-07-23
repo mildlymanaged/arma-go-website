@@ -1,0 +1,102 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { pageMeta } from "../data/siteContent";
+---
+
+<BaseLayout {...pageMeta.refunds} noindex>
+  <!-- This draft requires review and approval by a qualified legal professional before publication. -->
+  <section class="section section-forest">
+    <div class="container page-content-header">
+      <p class="eyebrow">Legal draft</p>
+      <h1>Refund and Cancellation Policy</h1>
+      <p style="color:rgb(255 255 255 / .72)">
+        Effective date: <span class="placeholder">[EFFECTIVE DATE REQUIRED]</span>
+      </p>
+    </div>
+  </section>
+  <Breadcrumbs current="Refund and Cancellation Policy" />
+  <section class="section section-white">
+    <div class="container">
+      <div class="legal-note">
+        <strong>[LEGAL REVIEW REQUIRED]</strong>
+        <p>
+          This draft requires review and approval by a qualified legal
+          professional before publication.
+        </p>
+      </div>
+      <div class="legal-copy">
+        <section>
+          <h2>1. Important status of this draft</h2>
+          <p>
+            No refund period, cancellation deadline or entitlement is stated in
+            this draft. The policy must be completed using approved commercial
+            terms and reviewed by qualified legal counsel.
+          </p>
+          <p class="placeholder">[REFUND TERMS REQUIRED]</p>
+        </section>
+        <section>
+          <h2>2. Confirming the service before payment</h2>
+          <p>Before proceeding, written information should explain:</p>
+          <ul>
+            <li>Which services are included and excluded.</li>
+            <li>What each party is responsible for.</li>
+            <li>What fees are payable and when.</li>
+            <li>Which costs are paid to third parties.</li>
+            <li>The approved cancellation and refund conditions.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>3. Cancellation requests</h2>
+          <p>
+            The final policy must state how a cancellation request is made,
+            what information it must include, when it is treated as received
+            and how work already completed is handled.
+          </p>
+          <p class="placeholder">
+            [CANCELLATION PROCESS AND DEADLINES REQUIRED]
+          </p>
+        </section>
+        <section>
+          <h2>4. Refund assessment</h2>
+          <p>
+            The final policy must describe the circumstances in which a refund
+            may or may not apply, how any calculation is made and how the
+            decision is communicated.
+          </p>
+          <p class="placeholder">
+            [ELIGIBILITY, EXCLUSIONS AND CALCULATION METHOD REQUIRED]
+          </p>
+        </section>
+        <section>
+          <h2>5. Third-party costs</h2>
+          <p>
+            Any treatment of amounts paid to employers, institutions,
+            authorities, assessment providers or other third parties must match
+            actual payment arrangements and the applicable third-party terms.
+          </p>
+          <p class="placeholder">[THIRD-PARTY COST TERMS REQUIRED]</p>
+        </section>
+        <section>
+          <h2>6. Changes or delays outside Arma Go’s control</h2>
+          <p>
+            The final policy should address service changes, applicant changes
+            and third-party delays without implying that any outcome is
+            guaranteed.
+          </p>
+          <p class="placeholder">[APPROVED CHANGE AND DELAY TERMS REQUIRED]</p>
+        </section>
+        <section>
+          <h2>7. Contact and processing</h2>
+          <p>
+            The approved contact channel, response steps and processing method
+            must be added before publication.
+          </p>
+          <p class="placeholder">
+            [REFUND CONTACT AND PROCESSING DETAILS REQUIRED]
+          </p>
+        </section>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

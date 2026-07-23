@@ -1,0 +1,110 @@
+---
+import { Menu, X } from "lucide-astro";
+import { mailto, navItems, sitePath } from "../data/siteContent";
+
+const currentPath = Astro.url.pathname.replace(import.meta.env.BASE_URL, "/");
+const isActive = (href: string) =>
+  href === "/"
+    ? currentPath === "/"
+    : currentPath === href || currentPath.startsWith(`${href}/`);
+---
+
+<header class="site-header" data-site-header>
+  <div class="header-inner">
+    <a class="brand-link" href={sitePath("/")} aria-label="Arma Go home">
+      <img
+        src={sitePath("/images/arma-go-logo-horizontal.png")}
+        width="913"
+        height="157"
+        alt="Arma Go"
+      />
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      {
+        navItems.map((item) => (
+          <a
+            href={sitePath(item.href)}
+            aria-current={isActive(item.href) ? "page" : undefined}
+            class:list={{ active: isActive(item.href) }}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+    <a class="button button-amber header-cta" href={mailto.general}>
+      Contact Arma Go
+    </a>
+    <button
+      class="mobile-menu-button"
+      type="button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="mobile-navigation"
+    >
+      <span class="menu-open-icon"><Menu size={24} aria-hidden="true" /></span>
+      <span class="menu-close-icon"><X size={24} aria-hidden="true" /></span>
+    </button>
+  </div>
+  <nav
+    id="mobile-navigation"
+    class="mobile-nav"
+    aria-label="Mobile navigation"
+    hidden
+  >
+    {
+      navItems.map((item) => (
+        <a
+          href={sitePath(item.href)}
+          aria-current={isActive(item.href) ? "page" : undefined}
+          class:list={{ active: isActive(item.href) }}
+        >
+          {item.label}
+        </a>
+      ))
+    }
+    <a class="button button-amber" href={mailto.general}>Contact Arma Go</a>
+  </nav>
+</header>
+
+<script>
+  const menuButton =
+    document.querySelector<HTMLButtonElement>(".mobile-menu-button");
+  const mobileNav =
+    document.querySelector<HTMLElement>("#mobile-navigation");
+
+  const closeMenu = () => {
+    if (!menuButton || !mobileNav) return;
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "Open navigation");
+    mobileNav.hidden = true;
+    document.body.classList.remove("menu-open");
+  };
+
+  menuButton?.addEventListener("click", () => {
+    if (!mobileNav) return;
+    const willOpen = menuButton.getAttribute("aria-expanded") !== "true";
+    menuButton.setAttribute("aria-expanded", String(willOpen));
+    menuButton.setAttribute(
+      "aria-label",
+      willOpen ? "Close navigation" : "Open navigation",
+    );
+    mobileNav.hidden = !willOpen;
+    document.body.classList.toggle("menu-open", willOpen);
+  });
+
+  mobileNav?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+      menuButton?.focus();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 1120) closeMenu();
+  });
+</script>

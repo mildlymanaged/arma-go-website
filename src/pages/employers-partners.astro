@@ -1,0 +1,126 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import EmailCTA from "../components/EmailCTA.astro";
+import PageHero from "../components/PageHero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import {
+  emails,
+  imageAssets,
+  mailto,
+  pageMeta,
+} from "../data/siteContent";
+
+const support = [
+  "Role and candidate-profile discussions",
+  "Candidate outreach",
+  "Initial candidate screening",
+  "Background and document-readiness checks",
+  "Interview coordination",
+  "Candidate communication",
+  "Expectation setting",
+  "Pre-departure preparation",
+  "Mobility coordination",
+  "Onboarding support",
+  "Status reporting across agreed stages",
+];
+
+const readiness = [
+  "Incomplete document submissions",
+  "Missed interviews or assessments",
+  "Confusion about the role",
+  "Unrealistic relocation expectations",
+  "Delays caused by missing information",
+  "Candidate withdrawal during later stages",
+];
+---
+
+<BaseLayout {...pageMeta.partners}>
+  <PageHero
+    eyebrow="Employers and partners"
+    title="Build a clearer international recruitment process"
+    body={[
+      "Arma Go works with employers and partners seeking a more organised approach to candidate sourcing, preparation and mobility coordination.",
+    ]}
+    image={imageAssets.partners}
+    primary={{ label: "Email Our Partnerships Team", href: mailto.partnerships }}
+  >
+    <a slot="supporting" class="hero-support-link" href={mailto.partnerships}>
+      {emails.partnerships}
+    </a>
+  </PageHero>
+  <Breadcrumbs current="Employers & Partners" />
+
+  <section class="section section-white">
+    <div class="container intro-grid">
+      <p class="intro-lead" data-reveal>
+        International recruitment requires more than candidate volume
+      </p>
+      <div class="prose" data-reveal>
+        <p>
+          Employers need candidates who understand the role, the requirements,
+          the process and the commitment involved.
+        </p>
+        <p>
+          Poor preparation can lead to incomplete documents, missed interviews,
+          unrealistic expectations and candidate drop-off.
+        </p>
+        <p>
+          Arma Go helps create greater visibility across the candidate journey,
+          from initial understanding and preparation through the agreed
+          recruitment and mobility stages.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sage">
+    <div class="container split-grid">
+      <SectionHeading
+        eyebrow="Employer and partner support"
+        title="How Arma Go may support employers and partners"
+        intro="Depending on the role, destination and agreed scope, support may include:"
+      />
+      <div class="prose">
+        <ul>{support.map((item) => <li>{item}</li>)}</ul>
+        <p>
+          The exact responsibilities, timelines and commercial terms should be
+          confirmed in writing before the engagement begins.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container split-grid">
+      <SectionHeading
+        eyebrow="Why candidate readiness matters"
+        title="Prepared candidates create a clearer hiring process"
+        intro="Candidate readiness can help reduce:"
+        inverse
+      />
+      <div class="prose prose-inverse">
+        <ul>{readiness.map((item) => <li>{item}</li>)}</ul>
+        <p>
+          Arma Go helps candidates understand what may be expected before they
+          move further into the process.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sage">
+    <div class="container">
+      <EmailCTA
+        eyebrow="Employer and partner enquiries"
+        title="Tell us what your organisation needs"
+        body={[
+          "Email the Arma Go partnerships team with your company name, location, roles to fill, required experience or qualifications, expected candidate volume, preferred recruitment timeline, destination of employment, and required mobility or onboarding support.",
+        ]}
+        label="Email Our Partnerships Team"
+        href={mailto.partnerships}
+        email={emails.partnerships}
+      />
+    </div>
+  </section>
+</BaseLayout>

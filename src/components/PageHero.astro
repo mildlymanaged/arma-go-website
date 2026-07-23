@@ -1,0 +1,67 @@
+---
+import { ArrowRight } from "lucide-astro";
+import ImagePanel from "./ImagePanel.astro";
+import { sitePath } from "../data/siteContent";
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  body: string[];
+  image?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
+  primary?: { label: string; href: string };
+  secondary?: { label: string; href: string };
+  home?: boolean;
+  serif?: boolean;
+}
+
+const {
+  eyebrow,
+  title,
+  body,
+  image,
+  primary,
+  secondary,
+  home = false,
+  serif = false,
+} = Astro.props;
+---
+
+<section
+  class:list={[
+    "page-hero",
+    { "home-hero": home, "serif-hero": serif || home, "no-image": !image },
+  ]}
+>
+  <div class="container hero-grid">
+    <div class="hero-copy" data-reveal>
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <h1>{title}</h1>
+      <div class="hero-body">
+        {body.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+      {
+        (primary || secondary) && (
+          <div class="hero-actions">
+            {primary && (
+              <a class="button button-amber" href={sitePath(primary.href)}>
+                {primary.label}<ArrowRight size={18} aria-hidden="true" />
+              </a>
+            )}
+            {secondary && (
+              <a class="button button-ghost" href={sitePath(secondary.href)}>
+                {secondary.label}<ArrowRight size={18} aria-hidden="true" />
+              </a>
+            )}
+          </div>
+        )
+      }
+      <slot name="supporting" />
+    </div>
+    {image && <ImagePanel {...image} eager position={home ? "65% center" : "center"} />}
+  </div>
+</section>
