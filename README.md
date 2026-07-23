@@ -100,29 +100,22 @@ The local `scripts/process_assets.py` records how the current source PNGs were r
 
 ## GitHub Pages deployment
 
-### 1. Configure the GitHub username and repository name
+### 1. Production URL configuration
 
-The workflow in `.github/workflows/deploy.yml` automatically reads:
+The workflow in `.github/workflows/deploy.yml` deploys the site at:
 
-- GitHub username or organisation from `github.repository_owner`
-- Repository name from `github.event.repository.name`
-- Public site origin as `https://YOUR-USERNAME.github.io`
-- Repository base path as `/YOUR-REPOSITORY-NAME`
-
-This produces a public URL in the form:
-
-`https://YOUR-USERNAME.github.io/YOUR-REPOSITORY-NAME/`
+`https://armago.me`
 
 Astro reads these values through:
 
 - `SITE_URL` for the `site` value in `astro.config.mjs`
 - `BASE_PATH` for the `base` value in `astro.config.mjs`
 
-All internal links and public asset paths use the configured base path.
+The production workflow sets `SITE_URL=https://armago.me` and `BASE_PATH=/`.
+All internal links and public asset paths therefore resolve from the custom-domain root.
+The `public/CNAME` file preserves the GitHub Pages custom-domain setting.
 
-If the repository itself is named `YOUR-USERNAME.github.io`, change the workflow’s `BASE_PATH` value to `/` because that type of repository is served from the root.
-
-To test a repository path locally, copy `.env.example` to `.env`, replace the example values and restart the local development server. For ordinary root-path development, leave the values unset.
+To test the production origin locally, copy `.env.example` to `.env` and restart the local development server.
 
 ### 2. Create and push the GitHub repository
 
@@ -166,18 +159,11 @@ git push
 
 GitHub Actions will deploy the updated site automatically.
 
-## Add a custom domain later
+## Custom domain
 
-When an approved custom domain is ready:
-
-1. Configure the custom domain in **GitHub repository → Settings → Pages**.
-2. Add the required DNS records with the domain provider, following GitHub’s current Pages documentation.
-3. Update the workflow’s `SITE_URL` to the full custom origin, for example `https://www.example.com`.
-4. Change `BASE_PATH` to `/`.
-5. Add a `public/CNAME` file containing only the approved domain if GitHub requires it for the chosen setup.
-6. Rebuild, deploy and verify canonical links, the sitemap, images and internal navigation on the custom domain.
-
-Do not add a placeholder `CNAME` before the real domain is approved.
+The approved custom domain is `armago.me`. GitHub Pages remains deployed through
+GitHub Actions, with DNS configured externally. The canonical production origin is
+`https://armago.me`, and `www.armago.me` should redirect to the apex domain.
 
 ## Embed in Google Sites
 

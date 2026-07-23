@@ -18,8 +18,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      SITE_URL: https://${{ github.repository_owner }}.github.io
-      BASE_PATH: /${{ github.event.repository.name }}
+      SITE_URL: https://armago.me
+      BASE_PATH: /
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
@@ -42,7 +42,7 @@ jobs:
         run: pnpm run build
 
       - name: Validate routes, links, assets and terminology
-        run: python3 scripts/check_static_site.py --base "/${{ github.event.repository.name }}"
+        run: python3 scripts/check_static_site.py --base "/"
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
